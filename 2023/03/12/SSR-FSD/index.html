@@ -34,7 +34,7 @@
 <meta property="og:image" content="http://example.com/2023/03/12/images/2023-03-13-23-10-18.png">
 <meta property="og:image" content="http://example.com/2023/03/12/images/2023-03-13-23-11-29.png">
 <meta property="article:published_time" content="2023-03-12T03:10:35.730Z">
-<meta property="article:modified_time" content="2023-03-14T08:27:03.881Z">
+<meta property="article:modified_time" content="2023-03-14T08:36:27.395Z">
 <meta property="article:author" content="Night">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2023/03/12/images/2023-03-12-15-35-35.png">
@@ -202,7 +202,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-14 16:27:03" itemprop="dateModified" datetime="2023-03-14T16:27:03+08:00">2023-03-14</time>
+                <time title="修改时间：2023-03-14 16:36:27" itemprop="dateModified" datetime="2023-03-14T16:36:27+08:00">2023-03-14</time>
               </span>
 
           
@@ -225,15 +225,14 @@
       
         <h1 id="论文第一辑"><a href="#论文第一辑" class="headerlink" title="论文第一辑"></a>论文第一辑</h1><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>本人小小研究生一枚，开论文系列只为取悦自己，记录研究生活，别无他用。</p>
 <h2 id="SRR-FSD"><a href="#SRR-FSD" class="headerlink" title="SRR_FSD"></a>SRR_FSD</h2><p>论文名称：Semantic Relation Reasoning for Shot-Stable Few-Shot Object Detection</p>
-<h3 id="1-Abstract"><a href="#1-Abstract" class="headerlink" title="1. Abstract"></a>1. Abstract</h3><ol>
+<h2 id="1-Abstract"><a href="#1-Abstract" class="headerlink" title="1. Abstract"></a>1. Abstract</h2><ol>
 <li>对于base class 和novel class，其语义关系恒定<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">the semantic relation between the novel classes and the base classes is constant </span><br></pre></td></tr></table></figure></li>
 <li>研究语义关系和视觉信息，并进行显式推理</li>
 <li>从大量语义库中学习每一类的语义嵌入，并将检测器中的图像表示投影嵌入空间<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">represent each class concept by a semantic embedding learned，The detector is trained to project the image representations of objects into this embedding space</span><br></pre></td></tr></table></figure></li>
 <li>使用启发式知识图进行原始嵌入，并使用动态关系图增强嵌入  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">using the raw embeddings with a heuristic knowledge graph and propose to augment the embeddings with a dynamic relation graph</span><br></pre></td></tr></table></figure></li>
 <li>SRR-FSD具有更好的鲁棒性和稳定性</li>
 </ol>
-<span id="more"></span>
-<h3 id="2-Introduction"><a href="#2-Introduction" class="headerlink" title="2. Introduction"></a>2. Introduction</h3><p>模型表现与隐式镜头和显式镜头的数量具有很强的敏感性<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The explicit shots ：the available labeled objects from the novel classes.</span><br><span class="line"></span><br><span class="line">The implicit shots : the labeled objects from the base classes</span><br></pre></td></tr></table></figure><br><img src="../images/2023-03-12-15-35-35.png" alt></p>
+<h2 id="2-Introduction"><a href="#2-Introduction" class="headerlink" title="2. Introduction"></a>2. Introduction</h2><p>模型表现与隐式镜头和显式镜头的数量具有很强的敏感性<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The explicit shots ：the available labeled objects from the novel classes.</span><br><span class="line"></span><br><span class="line">The implicit shots : the labeled objects from the base classes</span><br></pre></td></tr></table></figure><br><img src="../images/2023-03-12-15-35-35.png" alt></p>
 <center>
 图1 实线表示预训练时模型骨干的初始化采用ImageNet的原始内容，虚线表示预训练过程中Novel classes中图片从Images中去除
 </center><br>       
@@ -254,7 +253,7 @@
 2. SRR-FSD表现稳定。
 3. 提出一种更为现实的FSOD设置，即在预训练模型中时，将Novel Classes信息删除。 
 
-### 3. Semantic Relation Reasoning Few-Shot Detector
+## 3. Semantic Relation Reasoning Few-Shot Detector
 主要讨论小样本目标检测的初步知识；   
 
 基于Faster-RCNN，通过融合语义关系和视觉信息构建SRR-FSD，并且执行关系推理；
@@ -268,15 +267,15 @@
 图3：通过数据集中所有类对应的词嵌入构建语义空间，并通过关系推理模块进行扩充，视觉特征因此被投影到增强空间。
 </center>    
 
-<h4 id="3-1-FSOB-Preliminaries"><a href="#3-1-FSOB-Preliminaries" class="headerlink" title="3.1 FSOB Preliminaries"></a>3.1 FSOB Preliminaries</h4><p>关于小目标检测的问题描述   </p>
+<h3 id="3-1-FSOB-Preliminaries"><a href="#3-1-FSOB-Preliminaries" class="headerlink" title="3.1 FSOB Preliminaries"></a>3.1 FSOB Preliminaries</h3><p>关于小目标检测的问题描述   </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Conventional object detection problem has a base class set Cb in which there are many instances, and a base datasetDb with abundant images. Db consists of a set of annotated images &#123;(xi, yi)&#125; where xi is the image and yi is the annotation of labels from Cb and bounding boxes for objects inxi. For few-shot object detection (FSOD) problem, in addition to Cb and Db it also has a novel class set Cn and a novel dataset Dn, with Cb ∩ Cn = ∅. In Dn, objects have labels belong to Cn and the number of objects for each class is k for k-shot detection. A few-shot detector is expected to learn from Db and to quickly generalize to Dn with a smallk such that it can detect all objects in a held-out testing set with object classes in Cb ∪ Cn.</span><br></pre></td></tr></table></figure>
 <p>关于两阶段训练方式    </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A typical few-shot detector has two training phases. The first one is the base training phase where the detector is trained on Db similarly to conventional object detectors. Then in the second phase, it is further fine-tuned on the union of Db and Dn.To avoid the dominance of objects from Db, a small subset is sampled from Db such that the training set is balanced concerning the number of objects per class.</span><br></pre></td></tr></table></figure>
-<h4 id="3-2-Semantic-Space-Projection"><a href="#3-2-Semantic-Space-Projection" class="headerlink" title="3.2 Semantic Space Projection"></a>3.2 Semantic Space Projection</h4><p>对于Faster—RCNN，在其分类子网中，特征向量通过全连接层变为 $d$ 维度张量 $v\in R^d$,与可学习权重 $W\in R^{N\times d}$ 按照公式结合，最后输出每种类别可能性。</p>
+<h3 id="3-2-Semantic-Space-Projection"><a href="#3-2-Semantic-Space-Projection" class="headerlink" title="3.2 Semantic Space Projection"></a>3.2 Semantic Space Projection</h3><p>对于Faster—RCNN，在其分类子网中，特征向量通过全连接层变为 $d$ 维度张量 $v\in R^d$,与可学习权重 $W\in R^{N\times d}$ 按照公式结合，最后输出每种类别可能性。</p>
 <script type="math/tex; mode=display">p=softmax(Wv+b) \tag{1}</script><p>其中 $N$ 是类别个数，并且 $b$ 是可学习的偏差张量 $b\in R^N$ 。</p>
 <p>为了学习视觉信息和语义关系，构建语义空间并且将张量 $v$ 投影到语义空间，使用 $W_e\in R^{d_e\times d}$ ，其与类别相关。并且在分类子网中学习线性映射$P\in R^{d_e\times d}$,最后的概率输出</p>
 <script type="math/tex; mode=display">p=softmax(W_ePv+b) \tag{2}</script><p>$W_e$实现了语义编码，但是当图像增加，嵌入知识可能会误导，因此利用类之间的显式关系对嵌入进行增强。</p>
-<h4 id="3-3-Relation-Reasoning"><a href="#3-3-Relation-Reasoning" class="headerlink" title="3.3 Relation Reasoning"></a>3.3 Relation Reasoning</h4><p>由于语义空间中类与类之间没有知识传播，因此引入知识图谱。知识图谱$G$是一个$ N\times N$ 的邻接矩阵，通过图卷积参与分类。</p>
+<h3 id="3-3-Relation-Reasoning"><a href="#3-3-Relation-Reasoning" class="headerlink" title="3.3 Relation Reasoning"></a>3.3 Relation Reasoning</h3><p>由于语义空间中类与类之间没有知识传播，因此引入知识图谱。知识图谱$G$是一个$ N\times N$ 的邻接矩阵，通过图卷积参与分类。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">The knowledge graph G is a N ×N adjacency matrix representing the connection strength for every neighboring class pairs. </span><br><span class="line">G is involved in classification via the graph convolution operation</span><br></pre></td></tr></table></figure>
 <script type="math/tex; mode=display">p=softmax(GW_ePv+b) \tag{3}</script><p>不使用基于启发式的预先定义知识图，而是使用学习由数据驱动的动态关系图来模拟类之间的推理。<br><img src="../images/2023-03-13-22-49-36.png" alt></p>
 <center>
@@ -285,14 +284,14 @@
 
 <p>由线性层$f,g$点积得到自注意力矩阵，并且与$h$进行点积得到$ l $，将原始嵌入$W_e$与$l$进行残差连接。</p>
 <p>其优点在于可以轻易适应新类。</p>
-<h4 id="3-4-Decoupled-Fine-tuning"><a href="#3-4-Decoupled-Fine-tuning" class="headerlink" title="3.4 Decoupled Fine-tuning"></a>3.4 Decoupled Fine-tuning</h4><p>对于定位子网和分类子网，由于其共享特征，因此对于新对象的定位通过共享特征干扰分类子网，导致误报，因此需要解耦。</p>
+<h3 id="3-4-Decoupled-Fine-tuning"><a href="#3-4-Decoupled-Fine-tuning" class="headerlink" title="3.4 Decoupled Fine-tuning"></a>3.4 Decoupled Fine-tuning</h3><p>对于定位子网和分类子网，由于其共享特征，因此对于新对象的定位通过共享特征干扰分类子网，导致误报，因此需要解耦。</p>
 <p>具体方式，分类子网和定位子网具有单独的全连接层，独立微调。<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">the classification subnet and the localization subnet have individual fully-connected layers and they are fine-tuned independently.</span><br></pre></td></tr></table></figure></p>
-<h3 id="4-EXperiment"><a href="#4-EXperiment" class="headerlink" title="4 EXperiment"></a>4 EXperiment</h3><p><img src="../images/2023-03-13-23-08-30.png" alt></p>
+<h2 id="4-EXperiment"><a href="#4-EXperiment" class="headerlink" title="4 EXperiment"></a>4 EXperiment</h2><p><img src="../images/2023-03-13-23-08-30.png" alt></p>
 <p><img src="../images/2023-03-13-23-09-31.png" alt></p>
 <p><img src="../images/2023-03-13-23-10-18.png" alt></p>
 <p><img src="../images/2023-03-13-23-11-29.png" alt></p>
-<h3 id="5-Conclusion"><a href="#5-Conclusion" class="headerlink" title="5 Conclusion"></a>5 Conclusion</h3><p>本工作提出将语义关系推理用于小样本目标检测，将base classes和novel classes之间的语义关系与现有的视觉信息结合，以此更好的融合新概念。</p>
-<h3 id="6-Comment"><a href="#6-Comment" class="headerlink" title="6 Comment"></a>6 Comment</h3><p>在小样本中，通过简单的语义嵌入，使得分类子网达到更好的性能，但是，为了使得类与类之间产生联系，本文提出的知识图$G$是一个很好的创新点。</p>
+<h2 id="5-Conclusion"><a href="#5-Conclusion" class="headerlink" title="5 Conclusion"></a>5 Conclusion</h2><p>本工作提出将语义关系推理用于小样本目标检测，将base classes和novel classes之间的语义关系与现有的视觉信息结合，以此更好的融合新概念。</p>
+<h2 id="6-Comment"><a href="#6-Comment" class="headerlink" title="6 Comment"></a>6 Comment</h2><p>在小样本中，通过简单的语义嵌入，使得分类子网达到更好的性能，但是，为了使得类与类之间产生联系，本文提出的知识图$G$是一个很好的创新点。</p>
 <p>同时，这也为以后的研究提供了一些思路，如何更好的获得base classes和novel classes之间的语义联系。</p>
 
     </div>
@@ -364,7 +363,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BA%E6%96%87%E7%AC%AC%E4%B8%80%E8%BE%91"><span class="nav-number">1.</span> <span class="nav-text">论文第一辑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="nav-number">1.1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SRR-FSD"><span class="nav-number">1.2.</span> <span class="nav-text">SRR_FSD</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Abstract"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. Abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Introduction"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-FSOB-Preliminaries"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">3.1 FSOB Preliminaries</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-Semantic-Space-Projection"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">3.2 Semantic Space Projection</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-Relation-Reasoning"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">3.3 Relation Reasoning</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-Decoupled-Fine-tuning"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">3.4 Decoupled Fine-tuning</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-EXperiment"><span class="nav-number">1.2.3.</span> <span class="nav-text">4 EXperiment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Conclusion"><span class="nav-number">1.2.4.</span> <span class="nav-text">5 Conclusion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Comment"><span class="nav-number">1.2.5.</span> <span class="nav-text">6 Comment</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BA%E6%96%87%E7%AC%AC%E4%B8%80%E8%BE%91"><span class="nav-number">1.</span> <span class="nav-text">论文第一辑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="nav-number">1.1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SRR-FSD"><span class="nav-number">1.2.</span> <span class="nav-text">SRR_FSD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Abstract"><span class="nav-number">1.3.</span> <span class="nav-text">1. Abstract</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Introduction"><span class="nav-number">1.4.</span> <span class="nav-text">2. Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-FSOB-Preliminaries"><span class="nav-number">1.4.1.</span> <span class="nav-text">3.1 FSOB Preliminaries</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Semantic-Space-Projection"><span class="nav-number">1.4.2.</span> <span class="nav-text">3.2 Semantic Space Projection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-Relation-Reasoning"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.3 Relation Reasoning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-Decoupled-Fine-tuning"><span class="nav-number">1.4.4.</span> <span class="nav-text">3.4 Decoupled Fine-tuning</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-EXperiment"><span class="nav-number">1.5.</span> <span class="nav-text">4 EXperiment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Conclusion"><span class="nav-number">1.6.</span> <span class="nav-text">5 Conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Comment"><span class="nav-number">1.7.</span> <span class="nav-text">6 Comment</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
