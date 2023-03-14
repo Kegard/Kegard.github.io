@@ -193,7 +193,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-14 20:07:58" itemprop="dateModified" datetime="2023-03-14T20:07:58+08:00">2023-03-14</time>
+                <time title="修改时间：2023-03-14 20:12:48" itemprop="dateModified" datetime="2023-03-14T20:12:48+08:00">2023-03-14</time>
               </span>
 
           
@@ -227,7 +227,7 @@
 
 因此，引入语义信息在小样本目标检测。具体来讲，使用词嵌入构建语义空间。通过类别词嵌入的引导，检测器将视觉信息投影到语义空间，并且将图像将其对齐。 
 
-![](../images/2023-03-12-16-19-31.png) 
+![](../images/2023-03-12-16-19-31.png)
 
 <center>
 图2 无论Base classes 和Novel classes视觉信息差异如何，其之间的语义关系都是恒定的，这有助于学习视觉信息
@@ -249,13 +249,14 @@
 
 简单讨论原始词嵌入和预定义知识图的问题；
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">discuss the problems of trivially using the raw word embeddings and the predefined knowledge graphs.</span><br></pre></td></tr></table></figure>
-介绍两阶段训练过程。    
+介绍两阶段训练过程。
 
 ![](../images/2023-03-12-16-27-55.png)
 
 <center>
 图3：通过数据集中所有类对应的词嵌入构建语义空间，并通过关系推理模块进行扩充，视觉特征因此被投影到增强空间。
 </center>    
+
 
 <h3 id="3-1-FSOB-Preliminaries"><a href="#3-1-FSOB-Preliminaries" class="headerlink" title="3.1 FSOB Preliminaries"></a>3.1 FSOB Preliminaries</h3><p>关于小目标检测的问题描述   </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Conventional object detection problem has a base class set Cb in which there are many instances, and a base datasetDb with abundant images. Db consists of a set of annotated images &#123;(xi, yi)&#125; where xi is the image and yi is the annotation of labels from Cb and bounding boxes for objects inxi. For few-shot object detection (FSOD) problem, in addition to Cb and Db it also has a novel class set Cn and a novel dataset Dn, with Cb ∩ Cn = ∅. In Dn, objects have labels belong to Cn and the number of objects for each class is k for k-shot detection. A few-shot detector is expected to learn from Db and to quickly generalize to Dn with a smallk such that it can detect all objects in a held-out testing set with object classes in Cb ∪ Cn.</span><br></pre></td></tr></table></figure>
@@ -267,7 +268,7 @@
 <script type="math/tex; mode=display">p=softmax(W_ePv+b) \tag{2}</script><p>$W_e$实现了语义编码，但是当图像增加，嵌入知识可能会误导，因此利用类之间的显式关系对嵌入进行增强。</p>
 <h3 id="3-3-Relation-Reasoning"><a href="#3-3-Relation-Reasoning" class="headerlink" title="3.3 Relation Reasoning"></a>3.3 Relation Reasoning</h3><p>由于语义空间中类与类之间没有知识传播，因此引入知识图谱。知识图谱$G$是一个$ N\times N$ 的邻接矩阵，通过图卷积参与分类。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">The knowledge graph G is a N ×N adjacency matrix representing the connection strength for every neighboring class pairs. </span><br><span class="line">G is involved in classification via the graph convolution operation</span><br></pre></td></tr></table></figure>
-<script type="math/tex; mode=display">p=softmax(GW_ePv+b) \tag{3}</script><p>不使用基于启发式的预先定义知识图，而是使用学习由数据驱动的动态关系图来模拟类之间的推理。    </p>
+<script type="math/tex; mode=display">p=softmax(GW_ePv+b) \tag{3}</script><p>不使用基于启发式的预先定义知识图，而是使用学习由数据驱动的动态关系图来模拟类之间的推理。</p>
 <p><img src="../images/2023-03-13-22-49-36.png" alt></p>
 <center>
 图4：关系推理模块架构。
