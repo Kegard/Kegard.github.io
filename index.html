@@ -193,7 +193,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-14 16:38:46" itemprop="dateModified" datetime="2023-03-14T16:38:46+08:00">2023-03-14</time>
+                <time title="修改时间：2023-03-14 16:58:09" itemprop="dateModified" datetime="2023-03-14T16:58:09+08:00">2023-03-14</time>
               </span>
 
           
@@ -216,7 +216,8 @@
 <li>使用启发式知识图进行原始嵌入，并使用动态关系图增强嵌入  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">using the raw embeddings with a heuristic knowledge graph and propose to augment the embeddings with a dynamic relation graph</span><br></pre></td></tr></table></figure></li>
 <li>SRR-FSD具有更好的鲁棒性和稳定性</li>
 </ol>
-<h2 id="2-Introduction"><a href="#2-Introduction" class="headerlink" title="2. Introduction"></a>2. Introduction</h2><p>模型表现与隐式镜头和显式镜头的数量具有很强的敏感性<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The explicit shots ：the available labeled objects from the novel classes.</span><br><span class="line"></span><br><span class="line">The implicit shots : the labeled objects from the base classes</span><br></pre></td></tr></table></figure><br><img src="../images/2023-03-12-15-35-35.png" alt></p>
+<h2 id="2-Introduction"><a href="#2-Introduction" class="headerlink" title="2. Introduction"></a>2. Introduction</h2><p>模型表现与隐式镜头和显式镜头的数量具有很强的敏感性<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The explicit shots ：the available labeled objects from the novel classes.</span><br><span class="line"></span><br><span class="line">The implicit shots : the labeled objects from the base classes</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2023/03/12/SSR-FSD/2023-03-12-15-35-35.png" alt></p>
 <center>
 图1 实线表示预训练时模型骨干的初始化采用ImageNet的原始内容，虚线表示预训练过程中Novel classes中图片从Images中去除
 </center><br>       
@@ -224,7 +225,7 @@
 对于其他模型，在预训练阶段，去除Novel classes中对象，对模型性能肯定有影响，因为检测器不能够通过预训练编码Novel classes中知识。原因在于Novel classes只通过图像学习，因此随着数据稀缺，视觉信息变得稀缺。    
 
 因此，引入语义信息在小样本目标检测。具体来讲，使用词嵌入构建语义空间。通过类别词嵌入的引导，检测器将视觉信息投影到语义空间，并且将图像将其对齐。 
-![](../images/2023-03-12-16-19-31.png)   
+![](./SSR-FSD/2023-03-12-16-19-31.png)   
 <center>
 图2 无论Base classes 和Novel classes视觉信息差异如何，其之间的语义关系都是恒定的，这有助于学习视觉信息
 </center><br>  
@@ -246,7 +247,7 @@
 简单讨论原始词嵌入和预定义知识图的问题；
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">discuss the problems of trivially using the raw word embeddings and the predefined knowledge graphs.</span><br></pre></td></tr></table></figure>
 介绍两阶段训练过程。
-![](../images/2023-03-12-16-27-55.png)
+![](./SSR-FSD/2023-03-12-16-27-55.png)
 <center>
 图3：通过数据集中所有类对应的词嵌入构建语义空间，并通过关系推理模块进行扩充，视觉特征因此被投影到增强空间。
 </center>    
@@ -261,7 +262,7 @@
 <script type="math/tex; mode=display">p=softmax(W_ePv+b) \tag{2}</script><p>$W_e$实现了语义编码，但是当图像增加，嵌入知识可能会误导，因此利用类之间的显式关系对嵌入进行增强。</p>
 <h3 id="3-3-Relation-Reasoning"><a href="#3-3-Relation-Reasoning" class="headerlink" title="3.3 Relation Reasoning"></a>3.3 Relation Reasoning</h3><p>由于语义空间中类与类之间没有知识传播，因此引入知识图谱。知识图谱$G$是一个$ N\times N$ 的邻接矩阵，通过图卷积参与分类。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">The knowledge graph G is a N ×N adjacency matrix representing the connection strength for every neighboring class pairs. </span><br><span class="line">G is involved in classification via the graph convolution operation</span><br></pre></td></tr></table></figure>
-<script type="math/tex; mode=display">p=softmax(GW_ePv+b) \tag{3}</script><p>不使用基于启发式的预先定义知识图，而是使用学习由数据驱动的动态关系图来模拟类之间的推理。<br><img src="../images/2023-03-13-22-49-36.png" alt></p>
+<script type="math/tex; mode=display">p=softmax(GW_ePv+b) \tag{3}</script><p>不使用基于启发式的预先定义知识图，而是使用学习由数据驱动的动态关系图来模拟类之间的推理。<br><img src="/2023/03/12/SSR-FSD/2023-03-13-22-49-36.png" alt></p>
 <center>
 图4：关系推理模块架构。
 </center>   
@@ -270,10 +271,10 @@
 <p>其优点在于可以轻易适应新类。</p>
 <h3 id="3-4-Decoupled-Fine-tuning"><a href="#3-4-Decoupled-Fine-tuning" class="headerlink" title="3.4 Decoupled Fine-tuning"></a>3.4 Decoupled Fine-tuning</h3><p>对于定位子网和分类子网，由于其共享特征，因此对于新对象的定位通过共享特征干扰分类子网，导致误报，因此需要解耦。</p>
 <p>具体方式，分类子网和定位子网具有单独的全连接层，独立微调。<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">the classification subnet and the localization subnet have individual fully-connected layers and they are fine-tuned independently.</span><br></pre></td></tr></table></figure></p>
-<h2 id="4-EXperiment"><a href="#4-EXperiment" class="headerlink" title="4 EXperiment"></a>4 EXperiment</h2><p><img src="../images/2023-03-13-23-08-30.png" alt></p>
-<p><img src="../images/2023-03-13-23-09-31.png" alt></p>
-<p><img src="../images/2023-03-13-23-10-18.png" alt></p>
-<p><img src="../images/2023-03-13-23-11-29.png" alt></p>
+<h2 id="4-EXperiment"><a href="#4-EXperiment" class="headerlink" title="4 EXperiment"></a>4 EXperiment</h2><p><img src="/2023/03/12/SSR-FSD/2023-03-13-23-08-30.png" alt></p>
+<p><img src="/2023/03/12/SSR-FSD/2023-03-13-23-09-31.png" alt></p>
+<p><img src="/2023/03/12/SSR-FSD/2023-03-13-23-10-18.png" alt></p>
+<p><img src="/2023/03/12/SSR-FSD/2023-03-13-23-11-29.png" alt></p>
 <h2 id="5-Conclusion"><a href="#5-Conclusion" class="headerlink" title="5 Conclusion"></a>5 Conclusion</h2><p>本工作提出将语义关系推理用于小样本目标检测，将base classes和novel classes之间的语义关系与现有的视觉信息结合，以此更好的融合新概念。</p>
 <h2 id="6-Comment"><a href="#6-Comment" class="headerlink" title="6 Comment"></a>6 Comment</h2><p>在小样本中，通过简单的语义嵌入，使得分类子网达到更好的性能，但是，为了使得类与类之间产生联系，本文提出的知识图$G$是一个很好的创新点。</p>
 <p>同时，这也为以后的研究提供了一些思路，如何更好的获得base classes和novel classes之间的语义联系。</p>
