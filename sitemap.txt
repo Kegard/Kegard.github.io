@@ -8,3 +8,4 @@ http://example.com/link/index.html
 http://example.com/music/index.html
 http://example.com/
 http://example.com/tags/Test/
+http://example.com/tags/Hexo/
