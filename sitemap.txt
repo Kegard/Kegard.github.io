@@ -1,3 +1,4 @@
+http://example.com/2023/11/25/%E5%B0%8F%E8%AE%B0/
 http://example.com/2023/11/24/hello-world/
 http://example.com/Gallery/index.html
 http://example.com/movies/index.html
@@ -8,3 +9,4 @@ http://example.com/link/index.html
 http://example.com/music/index.html
 http://example.com/
 http://example.com/tags/Hexo/
+http://example.com/tags/About/
