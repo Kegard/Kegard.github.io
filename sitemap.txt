@@ -1,5 +1,5 @@
-http://example.com/2023/11/24/hello-world/
 http://example.com/Gallery/index.html
+http://example.com/2023/11/24/hello-world/
 http://example.com/movies/index.html
 http://example.com/about/index.html
 http://example.com/categories/index.html
