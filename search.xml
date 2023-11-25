@@ -4,12 +4,43 @@
   
     
     <entry>
+      <title>从零搭建博客-Hexo</title>
+      <link href="/2023/11/25/Hexo/"/>
+      <url>/2023/11/25/Hexo/</url>
+      
+        <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>求学以来，零零散散的记录了一些问题，也形成了一些笔记，但是从未有过管理自己的博客的想法。归根结底，到底还是由于平台太多，自己太懒，并不像多平台发布，只想着取悦自己。因此，我搭建了一个专属自己的平台，随性发布一些内容。</p><p>选择<code>Hexo+GitHub</code>搭建博客，是因为本人现阶段并不打算租服务器或者在这上面花费太多的💴，因此选择这个组合来搭建博客</p><p>为了美化博客，最简单的方式就是使用<code>butterfly</code>等现有的主题，而关于如何使用<code>Node.js、GitHub、Hexo、Butterfly</code>搭建、美化，网络上有太多太多行之有效的教程，多出一份也毫无意义。因此，本人在此专门从小白角度，以身试法，总结一下自己遇到的问题</p><h3 id="博客搭建"><a href="#博客搭建" class="headerlink" title="博客搭建"></a>博客搭建</h3><ol><li><p>博客搭建初期，使用<code>Github</code>的进行<code>ssh key</code>连接过程，如果报错，很大程度上是网络问题，需要不断尝试 <code>打开代理-切换代理-关闭代理</code>等多种方法，或者是稍后访问。</p></li><li><p>基于<code>Hexo</code>的博客搭建常见命令</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo n page <span class="string">&quot;分类&quot;</span>  <span class="comment"># 新建页面</span></span><br><span class="line"></span><br><span class="line">hexo new <span class="string">&quot;My Blot&quot;</span>  <span class="comment"># 新建博客，注意冒号是必须带上的,会在source文件夹中出现 My Blot.md文件</span></span><br><span class="line"></span><br><span class="line">hexo g  <span class="comment"># 为md文件生成网页资源</span></span><br><span class="line"></span><br><span class="line">hexo d  <span class="comment"># 将网页资源推送到页面，也就是基于Github 搭建的页面</span></span><br><span class="line"></span><br><span class="line">hexo c  <span class="comment"># 清除所有已经生成的网页资源</span></span><br><span class="line"></span><br><span class="line">hexo s  <span class="comment"># 在本机上查看网页资源 （hostlocal：4000）端口号可能不一样 </span></span><br></pre></td></tr></table></figure></li></ol><h3 id="博客美化"><a href="#博客美化" class="headerlink" title="博客美化"></a>博客美化</h3><ol><li>本文接下来全部基于<code>butterfly</code></li><li><code>yml</code>打开时，尽量不要用<code>记事本</code>，因为<code>yml</code>中格式要求十分严格，<code>：</code>后面必须有一个<code>空格</code>，使用<code>记事本</code>容易破坏原有结构而导致报错</li><li><strong>子页面的生成</strong></li></ol><p>​<code>Butterfly</code>中提到，子页面也是普通页面，因此可以按照普通页面的生成方式进行生成。并且在示例中说明了如何添加“分类”、“标签”、“照片”等多个子页面。</p><p>​但是，本人遇到的问题如下：</p><img src="https://z1.ax1x.com/2023/11/25/pi0kDOg.png" alt="pi0kDOg.png" style="zoom:50%;" /><p>此情况一般是子页面缺失，需要新建子页面，子页面文件需要在主页面文件夹下，具体文件结构如下图：<img src="https://z1.ax1x.com/2023/11/25/pi0khlT.png" alt="pi0khlT.png"></p><p><img src="https://z1.ax1x.com/2023/11/25/pi0kfpV.png" alt="pi0kfpV.png"></p><p>其中<code>Gallery</code>文件夹包括<code>index.md</code>，以及所属的三个子页面文件夹<code>girls、scenry、wallpaper</code>，必须按照这个顺序，才能使得子页面有效。</p><ol start="4"><li><code>Butterfly</code>中画廊的应用</li></ol><p>说明文档中给出了代码示例，只要将下面代码放入<code>Gallery</code>主页面的<code>index.md</code>文件中，该页面下将会出现三个选项，这时候我们需要创建三个<code>子页面</code></p><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;gallery-group-main&quot;</span>&gt;</span></span><br><span class="line">&#123;% galleryGroup &#x27;壁纸&#x27; &#x27;也许，勇士每天面对的，都是星辰大海&#x27; &#x27;/Gallery/wallpaper&#x27; https://z1.ax1x.com/2023/11/25/piwvNvR.png %&#125;</span><br><span class="line">&#123;% galleryGroup &#x27;绝色&#x27; &#x27;如果你认为她是美的，那她便是极美的&#x27; &#x27;/Gallery/girls&#x27; https://z1.ax1x.com/2023/11/25/piwvY8J.png %&#125;</span><br><span class="line">&#123;% galleryGroup &#x27;风景&#x27; &#x27;人生在意的不是旅途终点，而是沿途的风景&#x27; &#x27;/Gallery/scenry&#x27; https://z1.ax1x.com/2023/11/25/piwvr5D.png %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure><p>并且将下面代码放入<code>子页面</code>的<code>index.md</code>,便可以实现示例中的操作</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% gallery %&#125;</span><br><span class="line">![piwviHf.png](https://z1.ax1x.com/2023/11/25/piwviHf.png)</span><br><span class="line">![piwvJC4.md.png](https://z1.ax1x.com/2023/11/25/piwvJC4.md.png)</span><br><span class="line">![piwvY8J.png](https://z1.ax1x.com/2023/11/25/piwvY8J.png)</span><br><span class="line">&#123;% endgallery %&#125;</span><br></pre></td></tr></table></figure><ol start="5"><li>图床</li></ol><p>将图片放至线上，在<code>md</code>文件中调用时直接使用<code>html</code>调用，可以节省本地的空间</p><h3 id="博客书写"><a href="#博客书写" class="headerlink" title="博客书写"></a>博客书写</h3><p>对于初学者，使用<code>Typora</code>或者<code>vscode</code>进行markdown文件的撰写都可以，但是语法需要多家联系</p><h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>关于<code>Hexo+butterfly</code>的博客搭建就到此结束，希望各位初学者能够跟随更加详细的博客，搭建出自己平台，当然，如果遇到一些 <strong>“这么简单我竟然没搞定”</strong> 的问题，也欢迎留言联系博主，让后续的学者少挠头！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hello World</title>
       <link href="/2023/11/24/hello-world/"/>
       <url>/2023/11/24/hello-world/</url>
       
         <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p><h3 id="Code-Test"><a href="#Code-Test" class="headerlink" title="Code Test"></a>Code Test</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Hello, my zone!&#x27;</span>)</span><br></pre></td></tr></table></figure><h3 id="Image-test"><a href="#Image-test" class="headerlink" title="Image test"></a>Image test</h3><p><a href="https://imgse.com/i/piwviHf"><img src="https://z1.ax1x.com/2023/11/25/piwviHf.md.png" alt="piwviHf.md.png"></a></p>]]></content>
       
+      
+      <categories>
+          
+          <category> Hexo </category>
+          
+      </categories>
       
       
         <tags>
