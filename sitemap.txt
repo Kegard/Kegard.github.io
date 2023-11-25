@@ -1,4 +1,4 @@
-http://example.com/2023/11/25/%E5%B0%8F%E8%AE%B0/
+http://example.com/about/%E5%B0%8F%E8%AE%B0.html
 http://example.com/2023/11/24/hello-world/
 http://example.com/Gallery/index.html
 http://example.com/movies/index.html
