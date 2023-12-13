@@ -1,6 +1,6 @@
+http://example.com/2023/12/12/Java/
 http://example.com/2023/12/13/DAP/
 http://example.com/2023/12/12/PS-GAN/
-http://example.com/2023/12/12/Java/
 http://example.com/2023/12/12/Hexo-Latex/
 http://example.com/2023/11/25/Hexo/
 http://example.com/2023/11/24/hello-world/
@@ -18,7 +18,7 @@ http://example.com/music/index.html
 http://example.com/
 http://example.com/tags/papernotes/
 http://example.com/tags/Hexo/
-http://example.com/tags/cs/
+http://example.com/tags/CS/
 http://example.com/categories/Adversarial-attack/
 http://example.com/categories/Hexo/
 http://example.com/categories/Java/
