@@ -164,28 +164,14 @@
 
   
   <url>
+    <loc>http://example.com/tags/papernotes/</loc>
+    <lastmod>2023-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://example.com/tags/Hexo/</loc>
-    <lastmod>2023-12-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/Papers/</loc>
-    <lastmod>2023-12-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/CS/</loc>
-    <lastmod>2023-12-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/PaperNotes/</loc>
     <lastmod>2023-12-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -198,31 +184,17 @@
     <priority>0.2</priority>
   </url>
   
-  <url>
-    <loc>http://example.com/tags/paperNotes/</loc>
-    <lastmod>2023-12-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/papernotes/</loc>
-    <lastmod>2023-12-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
 
   
   <url>
-    <loc>http://example.com/categories/Hexo/</loc>
+    <loc>http://example.com/categories/Adversarial-attack/</loc>
     <lastmod>2023-12-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/Adversarial-attack/</loc>
+    <loc>http://example.com/categories/Hexo/</loc>
     <lastmod>2023-12-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
